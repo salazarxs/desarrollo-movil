@@ -1,7 +1,7 @@
 package com.librompaz.app.data.remote
 
 // =====================================================================================
-// TODO(equipo): CONSUMO DE API REST (Retrofit ya configurado en Gradle)
+// GUÍA (fuera del alcance de EP2): CONSUMO DE API REST (Retrofit ya configurado en Gradle)
 // =====================================================================================
 // El caso pide consumir APIs REST de un backend en Spring Boot (microservicios). Está
 // pendiente con el CITT si cada equipo construye ese backend o solo simula su consumo.
