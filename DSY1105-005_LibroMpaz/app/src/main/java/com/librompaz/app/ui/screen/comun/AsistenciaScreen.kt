@@ -37,14 +37,6 @@ import com.librompaz.app.ui.components.MensajeAnimado
 import com.librompaz.app.util.hoy
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Asistencia": registro diario del curso con cuatro estados (P presente, A ausente,
- * T atrasado, J justificado). Pensada para resolverse en menos de un minuto: todos parten
- * "presente" y solo se toca a quienes no lo están. La usan el Docente (su curso) e Inspectoría
- * (cualquier curso).
- *
- * Pide confirmación antes de guardar porque puede sobrescribir un registro (RNF del caso).
- */
 @Composable
 fun AsistenciaScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val cursoId by viewModel.cursoSeleccionadoId.collectAsState()
@@ -140,7 +132,6 @@ fun AsistenciaScreen(navController: NavHostController, viewModel: LibroMpazViewM
             text = { Text("Si ya existía un registro para esta fecha, se va a sobrescribir.") },
             confirmButton = {
                 TextButton(onClick = {
-                    // Los estudiantes que no se tocaron quedan como PRESENTE.
                     val completo = estudiantes.associate { it.id to (estados[it.id] ?: EstadoAsistencia.PRESENTE) }
                     val guardo = viewModel.guardarAsistencia(cursoId.orEmpty(), fecha, completo)
                     confirmando = false
@@ -155,7 +146,6 @@ fun AsistenciaScreen(navController: NavHostController, viewModel: LibroMpazViewM
     }
 }
 
-/** Botón compacto de un estado (relleno si está elegido). */
 @Composable
 private fun BotonEstado(estado: EstadoAsistencia, seleccionado: Boolean, onClick: () -> Unit) {
     val colorEstado = when (estado) {

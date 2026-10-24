@@ -16,14 +16,7 @@ import com.librompaz.app.model.SesionClase
 import com.librompaz.app.model.TipoAnotacion
 import com.librompaz.app.model.Usuario
 
-/**
- * Datos 100% FICTICIOS (Ley 19.628 y Ley 21.719: prohibido usar nombres, RUT, antecedentes
- * académicos reales o diagnósticos PIE). Sirven para que las pantallas tengan algo que mostrar
- * mientras el equipo implementa Room.
- */
 object MockData {
-
-    /** Usuarios de prueba para el login. */
     val usuarios = listOf(
         Usuario("U1", "Docente Matemática (demo)", "docente.mat@libromp.cl", "docente123", Perfil.DOCENTE),
         Usuario("U2", "Docente Lenguaje (demo)", "docente.len@libromp.cl", "docente123", Perfil.DOCENTE),
@@ -43,7 +36,6 @@ object MockData {
     val estudiantes = (1..6).map { Estudiante("E3A-$it", "Estudiante 3A-%02d".format(it), "C3A") } +
         (1..6).map { Estudiante("E4A-$it", "Estudiante 4A-%02d".format(it), "C4A") }
 
-    /** El docente U1 tiene Matemática en 3°A y 4°A; U2 tiene Lenguaje en 4°A. */
     val cargas = listOf(
         CargaDocente("CD1", "U1", "C3A", "MAT"),
         CargaDocente("CD2", "U1", "C4A", "MAT"),
@@ -59,25 +51,11 @@ object MockData {
         ObjetivoAprendizaje("OA-CN-1", "CN", "OA 1 (ejemplo)", "Describir necesidades de los seres vivos."),
     )
 
-    val asistencias =
-        listOf(
-            "2026-10-01" to mapOf("E3A-2" to EstadoAsistencia.AUSENTE, "E3A-3" to EstadoAsistencia.ATRASADO),
-            "2026-10-02" to mapOf("E3A-2" to EstadoAsistencia.AUSENTE),
-            "2026-10-05" to mapOf("E3A-2" to EstadoAsistencia.AUSENTE, "E3A-5" to EstadoAsistencia.JUSTIFICADO),
-        ).flatMap { (fecha, excepciones) ->
-            estudiantes.filter { it.cursoId == "C3A" }.map { estudiante ->
-                RegistroAsistencia(
-                    "RA-$fecha-${estudiante.id}", estudiante.id, "C3A", fecha,
-                    excepciones[estudiante.id] ?: EstadoAsistencia.PRESENTE, "Docente Matemática (demo)", "$fecha 08:05"
-                )
-            }
-        } + estudiantes.filter { it.cursoId == "C4A" }.map { estudiante ->
-            RegistroAsistencia(
-                "RA-2026-10-02-${estudiante.id}", estudiante.id, "C4A", "2026-10-02",
-                if (estudiante.id == "E4A-4") EstadoAsistencia.AUSENTE else EstadoAsistencia.PRESENTE,
-                "Docente Lenguaje (demo)", "2026-10-02 08:10"
-            )
-        }
+    val asistencias = listOf(
+        RegistroAsistencia("RA1", "E3A-1", "C3A", "2026-10-01", EstadoAsistencia.PRESENTE, "Docente Matemática (demo)", "2026-10-01 08:05"),
+        RegistroAsistencia("RA2", "E3A-2", "C3A", "2026-10-01", EstadoAsistencia.AUSENTE, "Docente Matemática (demo)", "2026-10-01 08:05"),
+        RegistroAsistencia("RA3", "E3A-3", "C3A", "2026-10-01", EstadoAsistencia.ATRASADO, "Docente Matemática (demo)", "2026-10-01 08:05"),
+    )
 
     val sesiones = listOf(
         SesionClase("S1", "C3A", "MAT", "2026-10-01", "Bloque 1", listOf("OA-MAT-1"), "Conteo de 10 en 10 hasta 1.000.", "Docente Matemática (demo)", "2026-10-01 09:30"),

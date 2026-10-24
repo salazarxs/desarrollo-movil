@@ -15,18 +15,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 
-/**
- * Lista desplegable reutilizable (Material 3, ExposedDropdownMenuBox) para elegir un valor de
- * una lista: categorías, estados, tipos, etc.
- *
- * Ojo: ExposedDropdownMenu y menuAnchor() son funciones del bloque de ExposedDropdownMenuBox,
- * por eso se usan dentro de él y NO se importan.
- *
- * @param opciones   valores posibles.
- * @param seleccion  valor elegido (null = nada elegido todavía).
- * @param textoDe    cómo mostrar cada valor (por ejemplo { it.etiqueta }).
- * @param error      mensaje de error de validación (null = sin error).
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun <T> SelectorDesplegable(

@@ -39,10 +39,6 @@ import com.librompaz.app.ui.components.soporteError
 import com.librompaz.app.util.hoy
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Cobertura curricular" (docente): registrar los OA y contenidos trabajados en una
- * sesión o bloque, y ver las sesiones ya registradas.
- */
 @Composable
 fun RegistroClaseScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val cursoId by viewModel.cursoSeleccionadoId.collectAsState()

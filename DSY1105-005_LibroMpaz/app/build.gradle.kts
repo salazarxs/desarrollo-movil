@@ -2,8 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    // KSP: genera el código de Room (DAO, base de datos) al compilar.
-    alias(libs.plugins.ksp)
 }
 
 android {
@@ -45,27 +43,8 @@ android {
 }
 
 dependencies {
-    // --- Navegación entre pantallas ---
-    // navigation-compose 2.7.7 ya incluye el runtime de navegación. NO agregar
-    // "navigation-runtime-android": esa coordenada no existe en la versión 2.7.7.
     implementation(libs.androidx.navigation.compose)
-
-    // --- Íconos (flecha atrás, mostrar/ocultar clave, agregar, etc.) ---
     implementation(libs.androidx.material.icons.extended)
-
-    // --- Persistencia local: Room (OBLIGATORIO en este caso) + DataStore, ya configurados ---
-    // Ver data/local/PersistenciaPendiente.kt para saber qué crear.
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler)
-    implementation(libs.androidx.datastore.preferences)
-
-    // --- Consumo de API REST (Retrofit + Gson), ya configurado ---
-    // Ver data/remote/ApiPendiente.kt. El caso pide consumir un backend REST (alcance pendiente con el CITT).
-    implementation(libs.retrofit.core)
-    implementation(libs.retrofit.converter.gson)
-
-    // --- Dependencias estándar del proyecto (template de Android Studio) ---
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

@@ -20,7 +20,6 @@ import com.librompaz.app.navigation.Rutas
 import com.librompaz.app.ui.components.BarraSuperior
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/** Pantalla principal de UTP: acceso a la cobertura curricular y a la revisión de notas. */
 @Composable
 fun PanelUtpScreen(
     navController: NavHostController,

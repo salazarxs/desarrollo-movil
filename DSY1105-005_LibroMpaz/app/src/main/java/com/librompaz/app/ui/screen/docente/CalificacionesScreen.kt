@@ -39,11 +39,6 @@ import com.librompaz.app.ui.components.soporteError
 import com.librompaz.app.util.hoy
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Calificaciones" (docente): crear un instrumento de evaluación y registrar las notas
- * de cada estudiante (escala numérica chilena). Pide confirmación antes de guardar porque puede
- * sobrescribir notas (RNF del caso).
- */
 @Composable
 fun CalificacionesScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val cursoId by viewModel.cursoSeleccionadoId.collectAsState()

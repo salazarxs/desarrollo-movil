@@ -23,10 +23,6 @@ import com.librompaz.app.navigation.Rutas
 import com.librompaz.app.ui.components.BarraSuperior
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Pantalla principal del Docente: sus cursos y asignaturas asignados (carga docente).
- * RF: el docente solo ve lo que tiene asignado formalmente (RBAC).
- */
 @Composable
 fun MisCursosScreen(
     navController: NavHostController,

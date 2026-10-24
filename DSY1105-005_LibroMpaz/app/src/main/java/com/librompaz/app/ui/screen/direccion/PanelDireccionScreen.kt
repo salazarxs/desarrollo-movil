@@ -24,10 +24,6 @@ import com.librompaz.app.ui.components.BarraProgreso
 import com.librompaz.app.ui.components.BarraSuperior
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Panel administrativo" (Dirección): estado global del colegio con métricas
- * consolidadas por curso, y acceso al registro de auditoría.
- */
 @Composable
 fun PanelDireccionScreen(
     navController: NavHostController,

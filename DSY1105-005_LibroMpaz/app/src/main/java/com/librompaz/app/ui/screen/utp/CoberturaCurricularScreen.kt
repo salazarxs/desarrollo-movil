@@ -27,10 +27,6 @@ import com.librompaz.app.ui.components.BarraSuperior
 import com.librompaz.app.ui.components.SelectorDesplegable
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Cobertura curricular" (UTP): por curso y asignatura, qué OA ya se trabajaron y cuáles
- * faltan. RF: "vistas analíticas consolidadas de cobertura curricular por curso".
- */
 @Composable
 fun CoberturaCurricularScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val cursos by viewModel.cursos.collectAsState()

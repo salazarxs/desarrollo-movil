@@ -22,12 +22,6 @@ import androidx.navigation.NavHostController
 import com.librompaz.app.ui.components.BarraSuperior
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Inspectoría: estudiantes con inasistencias reiteradas y anotaciones que requieren
- * intervención, más la hoja de vida completa del colegio. RF: "revisar la hoja de vida e
- * identificar comportamientos de riesgo, inasistencias reiteradas o anotaciones que requieran
- * intervención".
- */
 @Composable
 fun AlertasInspectoriaScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val todas by viewModel.anotaciones.collectAsState()

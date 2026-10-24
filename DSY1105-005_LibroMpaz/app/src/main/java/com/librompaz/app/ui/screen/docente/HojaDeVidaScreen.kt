@@ -34,13 +34,6 @@ import com.librompaz.app.ui.components.SelectorDesplegable
 import com.librompaz.app.ui.components.soporteError
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Hoja de vida" (docente): registrar anotaciones positivas, negativas u observaciones
- * conductuales de un estudiante, y ver su historial. Cada anotación queda con marca temporal y
- * "firma" del docente responsable (usuario + fecha + hora).
- *
- * Pendiente con el CITT: el mecanismo exacto de firma digital.
- */
 @Composable
 fun HojaDeVidaScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val cursoId by viewModel.cursoSeleccionadoId.collectAsState()

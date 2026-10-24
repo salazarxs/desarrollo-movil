@@ -22,10 +22,6 @@ import androidx.navigation.NavHostController
 import com.librompaz.app.ui.components.BarraSuperior
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Calificaciones" (UTP): revisar el ingreso de notas e identificar desfases u omisiones
- * de registro. RF: "UTP debe poder revisar el ingreso de calificaciones".
- */
 @Composable
 fun RevisionCalificacionesScreen(navController: NavHostController, viewModel: LibroMpazViewModel) {
     val evaluaciones by viewModel.evaluaciones.collectAsState()

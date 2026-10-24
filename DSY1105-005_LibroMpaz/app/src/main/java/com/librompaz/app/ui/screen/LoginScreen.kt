@@ -41,15 +41,6 @@ import com.librompaz.app.ui.components.MensajeAnimado
 import com.librompaz.app.ui.components.soporteError
 import com.librompaz.app.viewmodel.LibroMpazViewModel
 
-/**
- * Módulo "Autenticación y alcance por rol": inicio de sesión. Según el perfil (Docente, UTP,
- * Inspectoría o Dirección), AppNavigation lleva a la pantalla principal de cada uno.
- * Regla del caso: no existe acceso para estudiantes ni apoderados.
- *
- * Usuarios de prueba (MockData.usuarios): docente.mat@libromp.cl / docente123,
- * utp@libromp.cl / utp123, inspectoria@libromp.cl / inspectoria123,
- * direccion@libromp.cl / direccion123.
- */
 @Composable
 fun LoginScreen(
     viewModel: LibroMpazViewModel,

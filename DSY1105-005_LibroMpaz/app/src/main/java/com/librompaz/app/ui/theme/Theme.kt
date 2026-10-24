@@ -12,9 +12,6 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-// Colores PROVISIONALES (no se cuenta con un manual de marca de la organización).
-// Pendiente: reemplazar por los colores oficiales si la escuela o el CITT los entregan,
-// y mantenerlos iguales a res/values/colors.xml (logo e ícono de la app).
 private val AzulLibro = Color(0xFF283593)
 private val VerdeSecundario = Color(0xFF2E7D32)
 private val NaranjoAlerta = Color(0xFFEF6C00)
@@ -42,7 +39,6 @@ fun LibroMpazTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            // statusBarColor está deprecado en API 35, pero sigue funcionando en minSdk 24–35.
             @Suppress("DEPRECATION")
             window.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
