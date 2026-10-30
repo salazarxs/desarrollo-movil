@@ -8,9 +8,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.librompaz.app.navigation.Rutas
@@ -46,22 +48,36 @@ fun PanelInspectoriaScreen(
         ) {
             Text("Hola, ${usuario?.nombre.orEmpty()}", style = MaterialTheme.typography.titleLarge)
 
-            Button(modifier = Modifier.fillMaxWidth(), onClick = { navController.navigate(Rutas.INSP_ALERTAS) }) {
+            Button(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = { navController.navigate(Rutas.INSP_ALERTAS) },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = Color.White
+                )
+            ) {
                 Text("Alertas: inasistencias y hoja de vida")
             }
 
             Text("Asistencia por curso", style = MaterialTheme.typography.titleSmall)
             cursos.forEach { curso ->
                 val porcentaje = remember(asistencias, curso.id) { viewModel.porcentajeAsistencia(curso.id) }
-                Card(modifier = Modifier.fillMaxWidth()) {
+                OutlinedCard(modifier = Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                         Text(curso.nombre, style = MaterialTheme.typography.titleMedium)
                         Text("Asistencia: ${porcentaje?.let { "$it %" } ?: "—"}", style = MaterialTheme.typography.bodyMedium)
-                        BarraProgreso((porcentaje ?: 0) / 100f)
-                        OutlinedButton(onClick = {
-                            viewModel.seleccionarCurso(curso.id)
-                            navController.navigate(Rutas.ASISTENCIA)
-                        }) { Text("Ver o gestionar asistencia") }
+                        BarraProgreso(
+                            (porcentaje ?: 0) / 100f,
+                            color = MaterialTheme.colorScheme.secondary,
+                            colorPista = MaterialTheme.colorScheme.outlineVariant
+                        )
+                        OutlinedButton(
+                            onClick = {
+                                viewModel.seleccionarCurso(curso.id)
+                                navController.navigate(Rutas.ASISTENCIA)
+                            },
+                            colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.onSurface)
+                        ) { Text("Ver o gestionar asistencia") }
                     }
                 }
             }
